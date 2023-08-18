@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    Create a new post
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Add_Post</h1>
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Post</button>
+        </form>
+    </div>
+
+    <script>
+        var authorField = document.getElementById("elder");
+        authorField.value = "{{ user.id }}";
+        authorField.placeholder = "{{ user.id }}";
+    </script>
+{% else %}
+    <p>You are not allowed here :)</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+       
+
+<h1>User_profile</h1>
+
+{{ page_user }}
+
+ <div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      {% if page_user.profile_pic %}
+        <img src="{{page_user.profile_pic.url}}" class="card-img">
+        {% else %}
+        <img src="{% static 'the_blog/images/WhatsApp Image 2023-05-09 at 19.05.42.jpg'%}" class="card-img">
+      {% endif %}
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">Shanmukh Sai</h5>
+        <p class="small text-muted "> <a href ="{% url 'show_profile_page' page_user.id %}">Profile_page |</a>
+                                      {% if page_user.website_url %}
+                                      <a href="{{page_user.website_url}}" >website |</a>
+                                      {% endif %}
+                                      {% if page_user.fb_url %}
+                                      <a href="{{page_user.fb_url}}" >facebook |</a>
+                                      {% endif %}
+                                      {% if page_user.twitter_url %}
+                                      <a href="{{page_user.twitter_url}}" >Twitter |</a>
+                                      {% endif %}
+                                      {% if page_user.instagram_url %}
+                                      <a href="{{page_user.instagram_url}}" >Instagram </a></p>
+                                      {% endif %}
+        <p class="card-text">{{page_user.bio}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ {% endblock%}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit_settings
+     {% endblock%}
+
+{% block content %}
+      <br/><br/>
+
+      {{ user.profile.bio }} 
+
+      <br/><br/>
+
+<h1>Edit Profile</h1>
+<div class="form-group">
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p}}
+	<button class="btn btn-secondary">Update_profile</button>
+</div>
+
+ {% endblock%}
